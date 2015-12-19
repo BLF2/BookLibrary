@@ -35,32 +35,32 @@ public class UserInfoFactory {
         return true;
     }
 
-    private void setUserCardNum(String userCardNum){
+    public void setUserCardNum(String userCardNum){
         if(userCardNum.length() <= 16 && checkUserNum(userCardNum))
             this.userCardNum = userCardNum;
         else
             this.userCardNum = null;
     }
 
-    private void setUserName(String userName){
+    public void setUserName(String userName){
         if(userName.length() <= 30)
             this.userName = userName;
         else
             this.userName = null;
     }
 
-    private void setUserSex(UserSex userSex){
+    public void setUserSex(UserSex userSex){
         this.userSex = userSex;
     }
 
-    private  void setUserStuNum(String userStuNum){
+    public  void setUserStuNum(String userStuNum){
         if(userStuNum.length() < 16 && checkUserNum(userStuNum))
             this.userStuNum = userStuNum;
         else
             this.userStuNum = null;
     }
 
-    private void setUserRule(UserRule userRule){
+    public void setUserRule(UserRule userRule){
         this.userRule = userRule;
     }
 
@@ -84,16 +84,9 @@ public class UserInfoFactory {
         return userRule;
     }
 
-    public IUser getUserInfo(){
+    public IUser getUserInfo(){//给出用户信息，封装出用户接口
         if(this.userCardNum == null || this.userName == null || this.userStuNum == null)
             return null;
         return new UserInfo(this.userCardNum,this.userName,this.userSex,this.userStuNum,this.userRule);
-    }
-
-    public boolean updateUserInfo(){
-        if(this.userCardNum == null || this.userName == null || this.userStuNum == null)
-            return false;
-        //数据库持久化
-        return true;
     }
 }
