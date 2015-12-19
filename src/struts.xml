@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.action.excludePattern" value="/static.*"></constant>
+    <package name="Admin" namespace="/admin" extends="struts-default">
+        <global-results>
+            <result name="error">/WEB-INF/WEB-CONTENT/error.jsp</result>
+            <result name="login">/WEB-INF/WEB-CONTENT/login.jsp</result>
+        </global-results>
+        <action name="todolist" class="cn.updev.Action.Todo.TodoListAction">
+            <result>/WEB-INF/WEB-CONTENT/dashboard/todo/todoList.jsp</result>
+        </action>
+        <action name="teamtask">
+            <result>/WEB-INF/WEB-CONTENT/dashboard/groups/TeamTask.jsp</result>
+        </action>
+        <action name="eventsmanage" class="cn.updev.Action.Event.EventManageAction">
+            <result name="success">/WEB-INF/WEB-CONTENT/dashboard/events/EventManage.jsp</result>
+        </action>
+        <action name="addEventGroup" class="cn.updev.Action.Event.EventGroupAction">
+            <result name="input">/WEB-INF/WEB-CONTENT/dashboard/events/AddEventGroup.jsp</result>
+            <result name="teaminput" type="redirect">/admin/group/addtask?groupId=${teamId}</result>
+            <result name="usertodo" type="redirect">/admin/eventsmanage?groupId=${groupId}</result>
+            <result name="teamtodo" type="redirect">/admin</result>
+        </action>
+        <action name="eventGroupEdit" class="cn.updev.Action.Event.EventGroupAction" method="getUserEventGroup">
+            <result name="success">/WEB-INF/WEB-CONTENT/dashboard/events/EditEventGroup.jsp</result>
+            <result name="input" type="redirect">/admin/eventsmanage</result>
+        </action>
+        <action name="saveEventGroup" class="cn.updev.Action.Event.EventGroupAction" method="updateUserEventGroup">
+            <result name="success" type="redirect">/admin/eventsmanage</result>
+            <result name="input">/WEB-INF/WEB-CONTENT/dashboard/events/EditEventGroup.jsp</result>
+        </action>
+        <action name="delEventGroup" class="cn.updev.Action.Event.EventGroupAction" method="delEventGroup">
+            <result name="success" type="redirect">/admin/eventsmanage</result>
+            <result name="input" type="redirect">/admin/eventsmanage?groupId=${groupId}</result>
+        </action>
+        <action name="addevents" class="cn.updev.Action.Admin.UserDashboardAction" method="addEvents">
+            <result name="success">/WEB-INF/WEB-CONTENT/dashboard/events/AddEvent_index.jsp</result>
+        </action>
+        <action name="addEvent" class="cn.updev.Action.Event.EventAction">
+            <result name="input">/WEB-INF/WEB-CONTENT/dashboard/events/AddEvent.jsp</result>
+            <result name="success" type="redirect">/admin</result>
+        </action>
+        <action name="eventFinish" class="cn.updev.Action.Event.EventAction" method="eventFinish">
+            <result name="success" type="redirect">/admin/eventsmanage?groupId=${groupId}</result>
+        </action>
+        <action name="updateEvent" class="cn.updev.Action.Event.EventAction" method="updateEvent">
+            <result name="success" type="redirect">/admin/eventsmanage?groupId=${groupId}</result>
+        </action>
+        <action name="delEvent" class="cn.updev.Action.Event.EventAction" method="delEvent">
+            <result name="success" type="redirect">/admin/eventsmanage?groupId=${groupId}</result>
+        </action>
+        <action name="addEventToGroup" class="cn.updev.Action.Event.EventAction" method="addEventToGroup">
+            <result name="success" type="redirect">/admin/eventsmanage?groupId=${groupId}</result>
+        </action>
+        <action name="*">
+            <result type="redirect">/login</result>
+        </action>
+    </package>
+    <package name="Login" namespace="/" extends="struts-default">
+        <global-results>
+            <result name="error">/WEB-INF/WEB-CONTENT/error.jsp</result>
+            <result name="login">/WEB-INF/WEB-CONTENT/login.jsp</result>
+        </global-results>
+        <action name="login" class="cn.updev.Action.Admin.AdminAction" method="login">
+            <result name="success" type="redirect">/admin</result>
+            <result name="login">/WEB-INF/WEB-CONTENT/login.jsp</result>
+        </action>
+        <action name="admin" class="cn.updev.Action.Admin.AdminAction">
+            <result name="user">/WEB-INF/WEB-CONTENT/dashboard/UserDashboard.jsp</result>
+            <result name="login" type="redirectAction">login</result>
+        </action>
+        <action name="logout" class="cn.updev.Action.Admin.AdminAction" method="logout">
+            <result name="success">/WEB-INF/WEB-CONTENT/login.jsp</result>
+            <result name="login" type="redirectAction">login</result>
+        </action>
+        <action name="register" class="cn.updev.Action.Admin.RegisterManager">
+            <result name="success" type="redirect">/admin</result>
+            <result name="input">/WEB-INF/WEB-CONTENT/register.jsp</result>
+        </action>
+        <action name="verify" class="cn.updev.Action.Admin.RegisterManager" method="makeVerify">
+            <result name="success" type="redirect">/admin</result>
+        </action>
+        <action name="*">
+            <result>/WEB-INF/WEB-CONTENT/index.jsp</result>
+        </action>
+    </package>
+    <package name="System" namespace="/admin/system" extends="struts-default">
+        <action name="message" class="cn.updev.Action.User.MessageAction">
+            <result>/WEB-INF/WEB-CONTENT/dashboard/systems/Message.jsp</result>
+        </action>
+    </package>
+    <package name="UserGroup" namespace="/admin/group" extends="struts-default">
+        <global-results>
+            <result name="error">/WEB-INF/WEB-CONTENT/error.jsp</result>
+            <result name="login">/WEB-INF/WEB-CONTENT/login.jsp</result>
+        </global-results>
+        <action name="addgroup" class="cn.updev.Action.User.UserGroupAction" method="createUserGroup">
+            <result name="input">/WEB-INF/WEB-CONTENT/dashboard/groups/AddUserGroup.jsp</result>
+            <result name="success" type="redirect">/admin/group/manage?groupId=${groupId}</result>
+        </action>
+        <action name="manage" class="cn.updev.Action.User.UserGroupAction" method="groupManage">
+            <result name="input">/WEB-INF/WEB-CONTENT/dashboard/groups/UserGroupManage_index.jsp</result>
+            <result name="success">/WEB-INF/WEB-CONTENT/dashboard/groups/UserGroupManage.jsp</result>
+        </action>
+        <action name="addtask" class="cn.updev.Action.Event.TeamTaskAction" method="addTask">
+            <result name="input">/WEB-INF/WEB-CONTENT/dashboard/groups/AddTask_chooseTeam.jsp</result>
+            <result name="success">/WEB-INF/WEB-CONTENT/dashboard/groups/AddTask.jsp</result>
+        </action>
+        <action name="editgroupinfo" class="cn.updev.Action.User.UserGroupAction" method="updateGroupInfo">
+            <result name="success" type="redirect">/admin/group/manage?groupId=${groupId}</result>
+        </action>
+        <action name="inviteuser" class="cn.updev.Action.User.UserGroupInviteAction" method="inviteNewUser">
+            <result name="success" type="redirect">/admin/group/manage?groupId=${groupId}</result>
+        </action>
+    </package>
+    <package name="API" namespace="/api" extends="json-default">
+        <global-results>
+            <result name="error">/WEB-INF/WEB-CONTENT/error.jsp</result>
+        </global-results>
+        <action name="judgeusername" class="cn.updev.Action.Admin.RegisterManager" method="judgeMailName">
+            <result type="json">
+                <param name="root">json</param>
+            </result>
+        </action>
+    </package>
+</struts>
