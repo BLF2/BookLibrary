@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <typedef class="net.model.staticFile.enumFile.UserSex" name="USex"/>
+    <typedef class="net.model.staticFile.enumFile.UserRule" name="URule"/>
+
+    <class name="net.model.userInfo.UserInfo" table="user_info">
+        <cache usage="read-write"/>
+        <id name="userId" column="user_id">
+            <generator class="native"/>
+        </id>
+        <property name="userCardNum" type="java.lang.String" column="user_card_num"/>
+        <property name="userName" type="java.lang.String" column="user_name"/>
+        <property name="userStuNum" type="java.lang.String" column="user_stu_num"/>
+        <property name="userSex" type="USex" column="user_sex"/>
+        <property name="userRule" type="URule" column="user_rule"/>
+    </class>
+</hibernate-mapping>

@@ -37,19 +37,11 @@
         <property name="c3p0.idleConnectionTestPeriod ">18000</property>
         <property name="c3p0.maxIdleTime">25000</property>
         <property name="c3p0.idle_test_period">120</property>
-        <!--事件和事件组映射文件 -->
-        <!--
-        <mapping resource="cn/updev/Events/Static/Event.hbm.xml"/>
-        <mapping resource="cn/updev/Events/Static/EventGroupInfo.hbm.xml"/>
-        <mapping resource="cn/updev/EventWeight/Weight/EventWeight.hbm.xml"/>
-        -->
-        <!--用户和用户组映射文件-->
-        <!--
-        <mapping resource="cn/updev/Users/Static/HibernateXML/User.hbm.xml"/>
-        <mapping resource="cn/updev/Users/Static/HibernateXML/GroupUser.hbm.xml"/>
-        <mapping resource="cn/updev/Users/Static/HibernateXML/GroupInfo.hbm.xml"/>
-        <mapping resource="cn/updev/Users/Static/HibernateXML/GroupMemberInviteInfo.hbm.xml"/>
-        <mapping resource="cn/updev/Users/Static/HibernateXML/Notification.hbm.xml"/>
-        -->
+
+        <!--数据库持久化映射文件-->
+        <mapping resource="net/model/staticFile/configFile/UserInfo.hbm.xml" />
+        <mapping resource="net/model/staticFile/configFile/BookInfo.hbm.xml" />
+        <mapping resource="net/model/staticFile/configFile/BookUser.hbm.xml" />
+
     </session-factory>
 </hibernate-configuration>

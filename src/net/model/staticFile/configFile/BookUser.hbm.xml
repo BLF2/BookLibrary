@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="net.model.bookUser.BookUser" table="book_user">
+        <cache usage="read-write"/>
+        <id name="bookUserId" column="book_user_id">
+            <generator class="native"/>
+        </id>
+        <property name="bookId" type="java.lang.Integer" column="book_id"/>
+        <property name="userId" type="java.lang.Integer" column="user_id"/>
+        <property name="borrowDate" type="java.util.Date" column="borrow_date"/>
+        <property name="shoudReturnDate" type="java.util.Date" column="should_return_date"/>
+        <property name="actualReturnDate" type="java.util.Date" column="actual_return_date"/>
+        <property name="overOrNot" type="java.lang.Boolean" column="over_or_not"/>
+        <property name="returnOrNot" type="java.lang.Boolean" column="return_or_not"/>
+    </class>
+</hibernate-mapping>

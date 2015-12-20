@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <typedef class="net.model.staticFile.enumFile.BookStatus" name="BStatus"/>
+
+    <class name="net.model.bookInfo.BookInfo" table="book_info">
+        <cache usage="read-write"/>
+        <id name="bookId" column="book_id">
+            <generator class="native"/>
+        </id>
+        <property name="bookNum" type="java.lang.String" column="book_num"/>
+        <property name="bookName" type="java.lang.String" column="book_name"/>
+        <property name="bookPrice" type="java.lang.Double" column="book_price"/>
+        <property name="bookAddDate" type="java.util.Date" column="book_add_date"/>
+        <property name="bookShelfNum" type="java.lang.String" column="book_shelf_num"/>
+        <property name="bookStatus" type="BStatus" column="book_status"/>
+    </class>
+</hibernate-mapping>
