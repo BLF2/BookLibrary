@@ -1,7 +1,8 @@
 package net.model.DAO;
 
 /**
- * Created by root on 15-12-19.
+ * Created by blf2 on 2015-12-19.
  */
 public class DbDelete {
+    
 }
