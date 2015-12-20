@@ -88,6 +88,6 @@ public class BookUserFactory {
 
     public IBookUser getBookUser(){//给出借书信息，封装出借书接口
         //数据库持久化
-        return null;
+        return new BookUser(this.bookId,this.userId,this.borrowDate,this.shoudReturnDate,this.actualReturnDate,this.overOrNot,this.returnOrNot).saveBookUser();
     }
 }

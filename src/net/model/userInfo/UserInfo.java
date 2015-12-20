@@ -1,5 +1,6 @@
 package net.model.userInfo;
 
+import net.model.DAO.DbInsert;
 import net.model.staticFile.enumFile.UserRule;
 import net.model.staticFile.enumFile.UserSex;
 import net.model.staticFile.interfaceFile.IUser;
@@ -88,6 +89,6 @@ public class UserInfo implements IUser{
 
     public UserInfo saveUserInfo(){
         //数据库持久化
-        return null;
+        return new DbInsert().insertUserInfo(this);
     }
 }

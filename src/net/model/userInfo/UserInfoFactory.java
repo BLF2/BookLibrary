@@ -87,6 +87,6 @@ public class UserInfoFactory {
     public IUser getUserInfo(){//给出用户信息，封装出用户接口
         if(this.userCardNum == null || this.userName == null || this.userStuNum == null)
             return null;
-        return new UserInfo(this.userCardNum,this.userName,this.userSex,this.userStuNum,this.userRule);
+        return new UserInfo(this.userCardNum,this.userName,this.userSex,this.userStuNum,this.userRule).saveUserInfo();
     }
 }

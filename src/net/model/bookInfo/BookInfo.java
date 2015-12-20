@@ -1,5 +1,6 @@
 package net.model.bookInfo;
 
+import net.model.DAO.DbInsert;
 import net.model.staticFile.enumFile.BookStatus;
 import net.model.staticFile.interfaceFile.IBookInfo;
 
@@ -91,6 +92,6 @@ public class BookInfo implements IBookInfo{
 
     public BookInfo saveBookInfo(){
         //数据库持久化
-        return null;
+        return new DbInsert().insertBookInfo(this);
     }
 }

@@ -1,5 +1,6 @@
 package net.model.bookUser;
 
+import net.model.DAO.DbInsert;
 import net.model.staticFile.interfaceFile.IBookUser;
 
 import java.util.Date;
@@ -18,9 +19,8 @@ public class BookUser implements IBookUser{
     private Boolean returnOrNot;//是否归还
 
     public BookUser(){}
-    public BookUser(Integer bookUserId, Integer bookId, Integer userId, Date borrowDate, Date shoudReturnDate,
+    public BookUser(Integer bookId, Integer userId, Date borrowDate, Date shoudReturnDate,
                     Date actualReturnDate, Boolean overOrNot, Boolean returnOrNot) {
-        this.bookUserId = bookUserId;
         this.bookId = bookId;
         this.userId = userId;
         this.borrowDate = borrowDate;
@@ -96,6 +96,6 @@ public class BookUser implements IBookUser{
 
     public BookUser saveBookUser(){
         //数据库持久化
-        return null;
+        return new DbInsert().insetrBookUser(this);
     }
 }

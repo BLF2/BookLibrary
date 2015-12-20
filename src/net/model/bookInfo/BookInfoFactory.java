@@ -82,7 +82,7 @@ public class BookInfoFactory {
         if(this.bookNum == null)
             return null;
         //数据库持久化
-        return null;
+        return new BookInfo(this.bookNum,this.bookName,this.bookPrice,this.bookAddDate,this.bookShelfNum,this.bookStatus).saveBookInfo();
     }
 
 }

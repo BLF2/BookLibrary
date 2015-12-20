@@ -18,7 +18,7 @@ public class DbUpdate {
         HibernateSessionFactory.closeSession();
         return true;
     }
-    public boolean updateBookUserInfo(BookUser bookUser){
+    public boolean updateBookUser(BookUser bookUser){
         Session session = HibernateSessionFactory.currentSession();
         Transaction transaction = session.beginTransaction();
         session.update(bookUser);
