@@ -6,7 +6,7 @@ import net.model.staticFile.interfaceFile.IBookInfo;
 import java.util.Date;
 
 /**
- * Created by blf2 on 15-12-19.
+ * Created by blf2 on 201515-12-19.
  */
 public class BookInfo implements IBookInfo{
     private Integer bookId;//书的id，由数据库生成，作为书的唯一标识
