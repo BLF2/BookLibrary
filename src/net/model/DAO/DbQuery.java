@@ -2,6 +2,7 @@ package net.model.DAO;
 
 import com.sun.org.apache.bcel.internal.generic.BIPUSH;
 import net.model.bookInfo.BookInfo;
+import net.model.bookUser.BookUser;
 import net.model.staticFile.interfaceFile.IBookInfo;
 import net.model.staticFile.interfaceFile.IBookUser;
 import net.model.staticFile.interfaceFile.IUser;
@@ -100,5 +101,29 @@ public class DbQuery {
         transaction.commit();
         HibernateSessionFactory.closeSession();
         return bookInfo;
+    }
+    public IBookUser queryBookUserById(Integer bookUserId){
+        Session session = HibernateSessionFactory.currentSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from BookUser bookUser where bookUser.bookUserId="+bookUserId);
+        if(query.list().size() == 0){
+            return null;
+        }
+        BookUser bookUser = (BookUser)query.list().get(0);
+        transaction.commit();
+        HibernateSessionFactory.closeSession();
+        return bookUser;
+    }
+    public IBookUser queryBookUserByUserIdAndBookId(Integer userId,Integer bookId){
+        Session session = HibernateSessionFactory.currentSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("from BookUser bookUser where bookUser.bookId="+bookId+" and userId="+userId);
+        if(query.list().size() == 0){
+            return null;
+        }
+        BookUser bookUser = (BookUser)query.list().get(0);
+        transaction.commit();
+        HibernateSessionFactory.closeSession();
+        return bookUser;
     }
 }
