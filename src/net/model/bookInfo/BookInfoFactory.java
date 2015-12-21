@@ -18,7 +18,12 @@ public class BookInfoFactory {
 
     public BookInfoFactory(){}
     public BookInfoFactory(String bookNum, String bookName, Double bookPrice, Date bookAddDate, String bookShelfNum, BookStatus bookStatus) {
-
+        this.setBookNum(bookNum);
+        this.setBookName(bookName);
+        this.setBookPrice(bookPrice);
+        this.setBookAddDate(bookAddDate);
+        this.setBookShelfNum(bookShelfNum);
+        this.setBookStatus(bookStatus);
     }
 
     public  void setBookNum(String bookNum){
@@ -35,7 +40,7 @@ public class BookInfoFactory {
             else
                 this.bookNum = null;
         }else{
-            this.bookNum = bookNum;
+            this.bookNum = null;
         }
     }
     public void setBookName(String bookName){
@@ -79,8 +84,11 @@ public class BookInfoFactory {
     }
 
     public IBookInfo getBookInfo(){//给出图书信息，封装出图书接口
-        if(this.bookNum == null)
+        if(this.bookNum == null){
+            System.out.println("数据不合法");
             return null;
+        }
+
         //数据库持久化
         return new BookInfo(this.bookNum,this.bookName,this.bookPrice,this.bookAddDate,this.bookShelfNum,this.bookStatus).saveBookInfo();
     }
