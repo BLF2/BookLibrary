@@ -13,14 +13,17 @@ import net.model.staticFile.interfaceFile.IUser;
  */
 public class UserInfoFactory {
     private String userCardNum;//用户卡号
+    private String userPswd;//用户密码
     private String userName;//用户名
     private UserSex userSex;//性别
     private String userStuNum;//学号
     private UserRule userRule;//角色 管理员和普通用户
 
     public UserInfoFactory(){}
-    public UserInfoFactory(String userCardNum, String userName, UserSex userSex, String userStuNum, UserRule userRule) {
+
+    public UserInfoFactory(String userCardNum, String userPswd, String userName, UserSex userSex, String userStuNum, UserRule userRule) {
         this.setUserCardNum(userCardNum);
+        this.setUserPswd(userPswd);
         this.setUserName(userName);
         this.setUserSex(userSex);
         this.setUserStuNum(userStuNum);
@@ -42,6 +45,12 @@ public class UserInfoFactory {
             this.userCardNum = null;
     }
 
+    public void setUserPswd(String userPswd){
+        if(userPswd.length() <= 16)
+            this.userPswd = userPswd;
+        else
+            this.userPswd = null;
+    }
     public void setUserName(String userName){
         if(userName.length() <= 30)
             this.userName = userName;
@@ -84,9 +93,11 @@ public class UserInfoFactory {
         return userRule;
     }
 
+    public String getUserPswd(){ return userPswd; }
+
     public IUser getUserInfo(){//给出用户信息，封装出用户接口
-        if(this.userCardNum == null || this.userName == null || this.userStuNum == null)
+        if(this.userCardNum == null || this.userName == null || this.userStuNum == null || this.userPswd == null)
             return null;
-        return new UserInfo(this.userCardNum,this.userName,this.userSex,this.userStuNum,this.userRule).saveUserInfo();
+        return new UserInfo(this.userCardNum,this.userPswd,this.userName,this.userSex,this.userStuNum,this.userRule).saveUserInfo();
     }
 }

@@ -13,6 +13,7 @@
             <generator class="native"/>
         </id>
         <property name="userCardNum" type="java.lang.String" column="user_card_num"/>
+        <property name="userPswd" type="java.lang.String" column="user_pswd"/>
         <property name="userName" type="java.lang.String" column="user_name"/>
         <property name="userStuNum" type="java.lang.String" column="user_stu_num"/>
         <property name="userSex" type="USex" column="user_sex"/>

@@ -10,6 +10,7 @@ public interface IUser {
     Integer getUserId();
     String getUserCardNum();
     String getUserName();
+    String getUserPswd();
     UserSex getUserSex();
     String getUserStuNum();
     UserRule getUserRule();

@@ -11,20 +11,24 @@ import net.model.staticFile.interfaceFile.IUser;
 public class UserInfo implements IUser{
     private Integer userId;//用户id
     private String userCardNum;//用户卡号
+    private String userPswd;//用户密码
     private String userName;//用户名
     private UserSex userSex;//性别
     private String userStuNum;//学号
     private UserRule userRule;//角色 管理员和普通用户
 
     public UserInfo(){}
-    public UserInfo(String userCardNum, String userName, UserSex userSex, String userStuNum, UserRule userRule) {
+
+    public UserInfo(String userCardNum, String userPswd, String userName, UserSex userSex, String userStuNum, UserRule userRule) {
         this.userCardNum = userCardNum;
+        this.userPswd = userPswd;
         this.userName = userName;
         this.userSex = userSex;
         this.userStuNum = userStuNum;
         this.userRule = userRule;
     }
 
+    @Override
     public Integer getUserId() {
         return userId;
     }
@@ -33,6 +37,7 @@ public class UserInfo implements IUser{
         this.userId = userId;
     }
 
+    @Override
     public String getUserCardNum() {
         return userCardNum;
     }
@@ -41,6 +46,15 @@ public class UserInfo implements IUser{
         this.userCardNum = userCardNum;
     }
 
+    public String getUserPswd() {
+        return userPswd;
+    }
+
+    public void setUserPswd(String userPswd) {
+        this.userPswd = userPswd;
+    }
+
+    @Override
     public String getUserName() {
         return userName;
     }
@@ -49,6 +63,7 @@ public class UserInfo implements IUser{
         this.userName = userName;
     }
 
+    @Override
     public UserSex getUserSex() {
         return userSex;
     }
@@ -57,6 +72,7 @@ public class UserInfo implements IUser{
         this.userSex = userSex;
     }
 
+    @Override
     public String getUserStuNum() {
         return userStuNum;
     }
@@ -65,6 +81,7 @@ public class UserInfo implements IUser{
         this.userStuNum = userStuNum;
     }
 
+    @Override
     public UserRule getUserRule() {
         return userRule;
     }
